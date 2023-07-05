@@ -253,10 +253,12 @@ end
 
 
 %  leg = legend;
-leg = legend('Bobola Ultrasound Only','','','','','Bobola US + Idazoxan','','','','','Sham Ultrasound Only','','','','','','Sham Ultrasound + Idazoxan','Location','southwest');
-leg.AutoUpdate = "off";
 
-title('Distribution of Averages for Alteration in T-Maze for Young 3XTG Mice');
+lgd = legend('Bobola Ultrasound Only','','','','','Bobola US + Idazoxan','','','','','Sham Ultrasound Only','','','','','','Sham Ultrasound + Idazoxan','location','bestoutside');
+lgd.AutoUpdate = "off";
+
+
+title('Distribution of % Alteration in T-Maze for Young 3XTG Mice');
 set(gca,'YLim', [0 130]);
 xlabel('Weeks Since CCI');
 ylabel('Average Alteration Rate');
@@ -374,7 +376,7 @@ set(gca, 'Xtick', 1:20);
 axis([xlim    0  ceil(max(yt)*1.1)])
 xt = get(gca, 'XTick');
 hold on
-plot(xt([6 7]), [1 1]*80, '-|k',  mean(xt([6 7])), 85, '*k')
+plot(xt([6 7]), [1 1]*80, '-|k',  mean(xt([6 7])), 80, '*k')
 hold off
 end
 MWp12 = ranksum(bob_only_4_young_1,sham_ida_4_young_1); % 1: Sham + ida vs Bobola
@@ -446,7 +448,7 @@ set(gca, 'Xtick', 1:20);
 axis([xlim    0  ceil(max(yt)*1.1)])
 xt = get(gca, 'XTick');
 hold on
-plot(xt([9 12]), [1 1]*80, '-|k',  mean(xt([9 12])), 85, '*k')
+plot(xt([9 12]), [1 1]*80, '-|k',  mean(xt([9 12])), 80, '*k')
 hold off
 end
 
@@ -530,7 +532,7 @@ set(gca, 'Xtick', 1:20);
 axis([xlim    0  ceil(max(yt)*1.1)])
 xt = get(gca, 'XTick');
 hold on
-plot(xt([18 20]), [1 1]*80, '-|k',  mean(xt([18 20])), 85, '*k')
+plot(xt([18 20]), [1 1]*80, '-|k',  mean(xt([18 20])), 80, '*k')
 hold off
 end 
 MWp27 = ranksum(sham_only_4_young_4,sham_ida_4_young_4); % 4: Sham + ida vs Sham
@@ -579,9 +581,10 @@ end
 set(gca,'xtick',[mean(positions(1:4)) mean(positions(5:8)) mean(positions(9:12)) mean(positions(13:16)) mean(positions(17:20))]) 
 set(gca,'xticklabel',{'0','1','2','3','4'},'Fontsize',28) 
 ylim([0 105])
-xlim([16.5 20.5])
+% xlim([16.5 20.5])
 
 
+% WEEK 0
 % data = [bob_ida_4_young_0; sham_only_4_young_0; sham_ida_4_young_0]';
 % [p_kw,tbl,stats] = kruskalwallis(data);
 % title('Kruskal-Wallis Across Cohorts at Week 0') 
@@ -597,6 +600,37 @@ xlim([16.5 20.5])
 % xlabel('Cohort')
 % xticklabels({'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
 
+% data = [bob_only_4_young_0; bob_ida_4_young_0; sham_only_4_young_0; sham_ida_4_young_0]';
+% [p_kw,tbl,stats] = kruskalwallis(data);
+% title('Kruskal-Wallis Across Cohorts at Week 0') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only' 'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+% [p_AN,tbl,stats] = anova1(data)
+% % p = anovan(data,{org when},'model',2,'varnames',{'origin','mfg date'})
+% title('ANOVA 1-Way Across Cohorts at Week 0') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only' 'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+
+% data = [bob_only_4_young_0; sham_only_4_young_0; sham_ida_4_young_0]';
+% [p_kw,tbl,stats] = kruskalwallis(data);
+% title('Kruskal-Wallis Across Cohorts at Week 0') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+% [p_AN,tbl,stats] = anova1(data)
+% % p = anovan(data,{org when},'model',2,'varnames',{'origin','mfg date'})
+% title('ANOVA 1-Way Across Cohorts at Week 0') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+
+% WEEK 1
 % data = [bob_ida_4_young_1; sham_only_4_young_1; sham_ida_4_young_1]';
 % [p_kw,tbl,stats] = kruskalwallis(data);
 % title('Kruskal-Wallis Across Cohorts at Week 1') 
@@ -612,6 +646,37 @@ xlim([16.5 20.5])
 % xlabel('Cohort')
 % xticklabels({'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
 
+% data = [bob_only_4_young_1; bob_ida_4_young_1; sham_only_4_young_1; sham_ida_4_young_1]';
+% [p_kw,tbl,stats] = kruskalwallis(data);
+% title('Kruskal-Wallis Across Cohorts at Week 1') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only' 'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+% [p_AN,tbl,stats] = anova1(data)
+% % p = anovan(data,{org when},'model',2,'varnames',{'origin','mfg date'})
+% title('ANOVA 1-Way Across Cohorts at Week 1') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only' 'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+
+% data = [bob_only_4_young_1; sham_only_4_young_1; sham_ida_4_young_1]';
+% [p_kw,tbl,stats] = kruskalwallis(data);
+% title('Kruskal-Wallis Across Cohorts at Week 1') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+% [p_AN,tbl,stats] = anova1(data)
+% % p = anovan(data,{org when},'model',2,'varnames',{'origin','mfg date'})
+% title('ANOVA 1-Way Across Cohorts at Week 1') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+
+% WEEK 2
 % data = [bob_ida_4_young_2; sham_only_4_young_2; sham_ida_4_young_2]';
 % [p_kw,tbl,stats] = kruskalwallis(data);
 % title('Kruskal-Wallis Across Cohorts at Week 2') 
@@ -627,6 +692,37 @@ xlim([16.5 20.5])
 % xlabel('Cohort')
 % xticklabels({'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
 
+% data = [bob_only_4_young_2; bob_ida_4_young_2; sham_only_4_young_2; sham_ida_4_young_2]';
+% [p_kw,tbl,stats] = kruskalwallis(data);
+% title('Kruskal-Wallis Across Cohorts at Week 2') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only' 'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+% [p_AN,tbl,stats] = anova1(data)
+% % p = anovan(data,{org when},'model',2,'varnames',{'origin','mfg date'})
+% title('ANOVA 1-Way Across Cohorts at Week 2') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only' 'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+
+% data = [bob_only_4_young_2; sham_only_4_young_2; sham_ida_4_young_2]';
+% [p_kw,tbl,stats] = kruskalwallis(data);
+% title('Kruskal-Wallis Across Cohorts at Week 2') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+% [p_AN,tbl,stats] = anova1(data)
+% % p = anovan(data,{org when},'model',2,'varnames',{'origin','mfg date'})
+% title('ANOVA 1-Way Across Cohorts at Week 2') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+
+% WEEK 3
 % data = [bob_ida_4_young_3; sham_only_4_young_3; sham_ida_4_young_3]';
 % [p_kw,tbl,stats] = kruskalwallis(data);
 % title('Kruskal-Wallis Across Cohorts at Week 3') 
@@ -642,21 +738,81 @@ xlim([16.5 20.5])
 % xlabel('Cohort')
 % xticklabels({'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
 
-data = [bob_ida_4_young_4; sham_only_4_young_4; sham_ida_4_young_4]';
+% data = [bob_only_4_young_3; bob_ida_4_young_3; sham_only_4_young_3; sham_ida_4_young_3]';
+% [p_kw,tbl,stats] = kruskalwallis(data);
+% title('Kruskal-Wallis Across Cohorts at Week 3') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only' 'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+% [p_AN,tbl,stats] = anova1(data)
+% % p = anovan(data,{org when},'model',2,'varnames',{'origin','mfg date'})
+% title('ANOVA 1-Way Across Cohorts at Week 3') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only' 'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+
+% data = [bob_only_4_young_3; sham_only_4_young_3; sham_ida_4_young_3]';
+% [p_kw,tbl,stats] = kruskalwallis(data);
+% title('Kruskal-Wallis Across Cohorts at Week 3') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+% [p_AN,tbl,stats] = anova1(data)
+% % p = anovan(data,{org when},'model',2,'varnames',{'origin','mfg date'})
+% title('ANOVA 1-Way Across Cohorts at Week 3') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+
+% WEEK 4
+% data = [bob_ida_4_young_4; sham_only_4_young_4; sham_ida_4_young_4]';
+% [p_kw,tbl,stats] = kruskalwallis(data);
+% title('Kruskal-Wallis Across Cohorts at Week 4') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+% [p_AN,tbl,stats] = anova1(data)
+% % p = anovan(data,{org when},'model',2,'varnames',{'origin','mfg date'})
+% title('ANOVA 1-Way Across Cohorts at Week 4') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+
+% data = [bob_only_4_young_4; bob_ida_4_young_4; sham_only_4_young_4; sham_ida_4_young_4]';
+% [p_kw,tbl,stats] = kruskalwallis(data);
+% title('Kruskal-Wallis Across Cohorts at Week 4') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only' 'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+% [p_AN,tbl,stats] = anova1(data)
+% % p = anovan(data,{org when},'model',2,'varnames',{'origin','mfg date'})
+% title('ANOVA 1-Way Across Cohorts at Week 4') 
+% ylabel('Average Percent Alteration')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'Bobola Ultrasound Only' 'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+
+data = [bob_only_4_young_4; sham_only_4_young_4; sham_ida_4_young_4]';
 [p_kw,tbl,stats] = kruskalwallis(data);
 title('Kruskal-Wallis Across Cohorts at Week 4') 
 ylabel('Average Percent Alteration')
 set(gca,'Fontsize',20)
 xlabel('Cohort')
-xticklabels({'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
+xticklabels({'Bobola Ultrasound Only','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
 [p_AN,tbl,stats] = anova1(data)
 % p = anovan(data,{org when},'model',2,'varnames',{'origin','mfg date'})
 title('ANOVA 1-Way Across Cohorts at Week 4') 
 ylabel('Average Percent Alteration')
 set(gca,'Fontsize',20)
 xlabel('Cohort')
-xticklabels({'Bobola US + Idazoxan','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
-
+xticklabels({'Bobola Ultrasound Only','Sham Ultrasound Only', 'Sham Ultrasound + Idazoxan'})
 
 % a = ([MWp1 MWp2 MWp3 MWp4 MWp5 MWp6])'; 
 % a = ([MWp7 MWp8 MWp9 MWp10 MWp11 MWp12])'; 
@@ -680,4 +836,100 @@ figure(12)
 annotation(gcf,'Textbox','String',TString,'Interpreter','Tex','FontName', ...
     FixedWidth,'Units','Normalized','Position',[0 0 1 1]);
 
+%% ADDITIONAL MW PAIRINGS
 
+figure(6)
+weeksMWp1 = ranksum(bob_only_4_young_0,bob_only_4_young_4); % Bobola only week 0 vs Bobola only week 4 
+if weeksMWp1 < 0.05 
+yt = get(gca, 'YTick');
+set(gca, 'Xtick', 1:20);
+axis([xlim    0  ceil(max(yt)*1.1)])
+xt = get(gca, 'XTick');
+hold on
+plot(xt([1 17]), [1 1]*85, '-|k',  mean(xt([1 17])), 85, '*k')
+hold off
+end 
+
+weeksMWp2 = ranksum(bob_ida_4_young_0,bob_ida_4_young_4); % Bobola ida week 0 vs Bobola ida week 4 
+if weeksMWp2 < 0.05 
+yt = get(gca, 'YTick');
+set(gca, 'Xtick', 1:20);
+axis([xlim    0  ceil(max(yt)*1.1)])
+xt = get(gca, 'XTick');
+hold on
+plot(xt([2 18]), [1 1]*85, '-|k',  mean(xt([2 18])), 85, '*k')
+hold off
+end 
+
+weeksMWp3 = ranksum(sham_only_4_young_0,sham_only_4_young_4); %  Sham only week 0 vs Sham only week 4 
+if weeksMWp3 < 0.05 
+yt = get(gca, 'YTick');
+set(gca, 'Xtick', 1:20);
+axis([xlim    0  ceil(max(yt)*1.1)])
+xt = get(gca, 'XTick');
+hold on
+plot(xt([3 19]), [1 1]*83, '-|k',  mean(xt([3 19])), 83, '*k')
+hold off
+end 
+
+weeksMWp4 = ranksum(sham_ida_4_young_0,sham_ida_4_young_4); %  Sham ida week 0 vs Sham ida week 4 
+if weeksMWp4 < 0.05 
+yt = get(gca, 'YTick');
+set(gca, 'Xtick', 1:20);
+axis([xlim    0  ceil(max(yt)*1.1)])
+xt = get(gca, 'XTick');
+hold on
+plot(xt([4 20]), [1 1]*86, '-|k',  mean(xt([4 20])), 86, '*k')
+hold off
+end 
+
+weeksMWp5 = ranksum(bob_only_4_young_1,bob_only_4_young_4); %  bobola week 1 vs bobola week 4 
+
+weeksMWp6 = ranksum(bob_ida_4_young_1,bob_ida_4_young_4); %  bob ida week 1 vs bob ida week 4 
+
+weeksMWp7 = ranksum(sham_only_4_young_1,sham_only_4_young_4); %  sham week 1 vs sham week 4 
+
+weeksMWp8 = ranksum(sham_ida_4_young_1,sham_ida_4_young_4); %  sham ida week 1 vs sham ida week 4 
+
+weeksMWp9 = ranksum(bob_only_4_young_0,bob_only_4_young_1); %  bobola week 0 vs bobola week 1
+
+weeksMWp10 = ranksum(bob_ida_4_young_0,bob_ida_4_young_1); %  bob ida week 0 vs bob ida week 1 
+
+weeksMWp11 = ranksum(sham_only_4_young_0,sham_only_4_young_1); %  sham week 0 vs sham week 1
+if weeksMWp11 < 0.05 
+yt = get(gca, 'YTick');
+set(gca, 'Xtick', 1:20);
+axis([xlim    0  ceil(max(yt)*1.1)])
+xt = get(gca, 'XTick');
+hold on
+plot(xt([3 7]), [1 1]*87, '-|k',  mean(xt([3 7])), 87, '*k')
+hold off
+end
+weeksMWp12 = ranksum(sham_ida_4_young_0,sham_ida_4_young_1); %  sham ida week 0 vs sham ida week 1
+
+
+
+set(gca,'xtick',[mean(positions(1:4)) mean(positions(5:8)) mean(positions(9:12)) mean(positions(13:16)) mean(positions(17:20))]) 
+set(gca,'xticklabel',{'0','1','2','3','4'},'Fontsize',28) 
+ylim([0 105])
+% xlim([16.5 20.5])
+
+
+a = ([weeksMWp1 weeksMWp2 weeksMWp3 weeksMWp4 weeksMWp5 weeksMWp6 weeksMWp7 weeksMWp8 weeksMWp9 weeksMWp10 weeksMWp11 weeksMWp12])'; 
+Pairing = {'Bobola only at Week 0 vs Week 4';'Bobola + ida at Week 0 vs Week 4';'Sham at Week 0 vs Week 4';'Sham + ida at Week 0 vs Week 4';'Bobola only at Week 1 vs Week 4';'Bobola + ida at Week 1 vs Week 4';
+    'Sham at Week 1 vs Week 4';'Sham + ida at Week 1 vs Week 4';'Bobola only at Week 0 vs Week 1';'Bobola + ida at Week 0 vs Week 1';'Sham at Week 0 vs Week 1';'Sham + ida at Week 0 vs Week 1'};
+myTable = table(Pairing,a,'VariableNames',{'Cohort Pairing','MW P-Value'})
+
+
+% Get the table in string form to output table as a figure
+TString = evalc('disp(myTable)');
+% Use TeX Markup for bold formatting and underscores.
+TString = strrep(TString,'<strong>','\bf');
+TString = strrep(TString,'</strong>','\rm');
+TString = strrep(TString,'_','\_');
+% Get a fixed-width font.
+FixedWidth = get(0,'FixedWidthFontName');
+% Output the table using the annotation command.
+figure(13)
+annotation(gcf,'Textbox','String',TString,'Interpreter','Tex','FontName', ...
+    FixedWidth,'Units','Normalized','Position',[0 0 1 1]);
