@@ -48,11 +48,11 @@ sham_ida_4_old = [mean(sham_ida_4_old_0,"omitnan") mean(sham_ida_4_old_1,"omitna
 % Plot against the time from CCI
 figure(1)
 weeks = [0 1 2 3 4];
-plot(weeks,bob_only_4_old,'r-*');
+plot(weeks,bob_only_4_old,'r-*','MarkerSize', 18);
 hold on
-plot(weeks,bob_ida_4_old,'b-*');
-plot(weeks,sham_only_4_old, 'g-*');
-plot(weeks,sham_ida_4_old,'m-*');
+plot(weeks,bob_ida_4_old,'b-*','MarkerSize', 18);
+plot(weeks,sham_only_4_old, 'g-*','MarkerSize', 18);
+plot(weeks,sham_ida_4_old,'m-*','MarkerSize', 18);
 hold off
 set(gca,'Fontsize',20)
 title('Percent Alteration in T-Maze Over Time for 4 Weeks of Treatment in Older 3XTG Mice')
