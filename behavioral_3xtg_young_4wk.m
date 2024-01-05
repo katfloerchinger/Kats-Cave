@@ -49,11 +49,11 @@ sham_ida_4_young = [mean(sham_ida_4_young_0,"omitnan") mean(sham_ida_4_young_1,"
 % Plot against the time from CCI
 figure(1)
 weeks = [0 1 2 3 4];
-plot(weeks,bob_only_4_young,'r-*','MarkerSize', 18);
+plot(weeks,bob_only_4_young,'-','MarkerSize', 18);
 hold on
-plot(weeks,bob_ida_4_young,'b-*','MarkerSize', 18);
-plot(weeks,sham_only_4_young, 'g-*','MarkerSize', 18);
-plot(weeks,sham_ida_4_young,'m-*','MarkerSize', 18);
+plot(weeks,bob_ida_4_young,'--','MarkerSize', 18);
+plot(weeks,sham_only_4_young, '-.','MarkerSize', 18);
+plot(weeks,sham_ida_4_young,':','MarkerSize', 18);
 hold off
 set(gca,'Fontsize',20)
 title('Percent Alternation in T-Maze Over Time for 4 Weeks of Treatment in Young 3XTG Mice')
