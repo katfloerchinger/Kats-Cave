@@ -158,7 +158,7 @@ UStype_4 = table2array(UStype_4);
 idatype_4 = data4(:, 4);
 idatype_4 = table2array(idatype_4);
 
-age_4 = data3(:, 5);
+age_4 = data4(:, 5);
 
 for i = 1:length(idatype_4)
     if  i <= a
@@ -171,10 +171,10 @@ end
 age_4 = table2array(age_4);
 
 % p_2way_old_4 = anovan(altrate_4(1:a),{UStype_4(1:a) idatype_4(1:a)},'model',1,'varnames',{'US presence in old','idazoxan presence in old'})
-% p_2way_young_4 = anovan(altrate_4(a+1:length(altrate_4)),{UStype_4(a+1:length(altrate_4)) idatype_4(a+1:length(altrate_4))},'model',1,'varnames',{'US presence in young','idazoxan presence in young'})
+p_2way_young_4 = anovan(altrate_4(a+1:length(altrate_4)),{UStype_4(a+1:length(altrate_4)) idatype_4(a+1:length(altrate_4))},'model',2,'varnames',{'US presence in young','idazoxan presence in young'})
 
-[p_3way_4,tbl,~] = anovan(altrate_4,{UStype_4 idatype_4 age_4},"Model",1, ...
-    'Varnames',{'US presence','idazoxan presence','age'})
+% [p_3way_4,tbl,~] = anovan(altrate_4,{UStype_4 idatype_4 age_4},"Model",1, ...
+%     'Varnames',{'US presence','idazoxan presence','age'})
 
 % [table,chi2,p] = crosstab(UStype_4, idatype_4, age_4)
 % heatmap(data0,'Drug','USTreatment')

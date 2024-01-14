@@ -68,19 +68,19 @@ stats_4_young = [bob_only_4_young_4; bob_ida_4_young_4; sham_only_4_young_4; sha
 % p = kruskalwallis(stats_4_young)
 % title('Kruskal-Wallis in 4 Week Young Mice')
  
-[p_AN,tbl,stats] = anova1(stats_4_young)
-title('ANOVA in 4 Week Young Mice')
+% [p_AN,tbl,stats] = anova1(stats_4_young)
+% title('ANOVA in 4 Week Young Mice')
 
  
-ylabel('Average Percent Alternation')
-set(gca,'Fontsize',20)
-xlabel('Cohort')
-xticklabels({'LIFUS Only','LIFUS + Idazoxan','Sham', 'Idazoxan Only'})
-lines = findobj(gcf, 'type', 'line', 'Tag','Median');
-xMed = mean(vertcat(lines.XData),2);
-yMed = vertcat(lines.YData);
-hold on
-plot(xMed, yMed, 'ro-') %this one has a circle to mark median
+% ylabel('Average Percent Alternation')
+% set(gca,'Fontsize',20)
+% xlabel('Cohort')
+% xticklabels({'LIFUS Only','LIFUS + Idazoxan','Sham', 'Idazoxan Only'})
+% lines = findobj(gcf, 'type', 'line', 'Tag','Median');
+% xMed = mean(vertcat(lines.XData),2);
+% yMed = vertcat(lines.YData);
+% hold on
+% plot(xMed, yMed, 'ro-') %this one has a circle to mark median
 
 %% STATS FOR WEEK 4
 % % Week 4 
@@ -179,13 +179,38 @@ tbl_stats2 = array2table(stats_table2,"VariableNames", ...
     ["Cohort at Week 4","Mean", "n","Maximum","Minimum","Median","Range","Standard Deviation"])
 
 
-%% TUKEY STATS
+%% POST HOC STATS
 
-%stats_4_young = [bob_only_4_young_4; bob_ida_4_young_4; sham_only_4_young_4; sham_ida_4_young_4]';
-[p_AN,tbl,stats] = anova1(stats_4_young)
-c1 = multcompare(stats,"Estimate","row","CriticalValueType","hsd");
-tbl1 = array2table(c1,"VariableNames", ...
-    ["Group A","Group B","Lower Limit of 95% CI","Mean Difference","Upper Limit of 95% CI","P-value"])
+a = 39;
+data4 = readtable('ANOVAN2 way unbalanced, age - Week 4.csv'); % ALL COHORTS
+
+altrate_4 = data4(:, 2);
+altrate_4 = table2array(altrate_4);
+
+UStype_4 = data4(:, 3);
+UStype_4 = table2array(UStype_4);
+
+idatype_4 = data4(:, 4);
+idatype_4 = table2array(idatype_4);
+
+[p_AN,tbl,stats] = anovan(altrate_4(a+1:length(altrate_4)),{UStype_4(a+1:length(altrate_4)) idatype_4(a+1:length(altrate_4))},'model',n,'display','on','varnames',{'US presence','idazoxan presence'});
 
 
+
+%% tukey
+[results,tbl,stats,gnames] = multcompare(stats,"Dimension",[1 2],"CriticalValueType","tukey-kramer");
+
+tbl = array2table(results,"VariableNames", ...
+    ["Group A","Group B","Lower Limit","Difference","Upper Limit","P-value"])
+tbl.("Group A")= gnames(tbl.("Group A"))
+tbl.("Group B")= gnames(tbl.("Group B"))
+
+
+%% bonferroni
+% [results,tbl,stats_hsd,gnames] = multcompare(stats,"Dimension",[1 2],"CriticalValueType","bonferroni");
+% 
+% tbl = array2table(results,"VariableNames", ...
+%     ["Group A","Group B","Lower Limit","Difference","Upper Limit","P-value"])
+% tbl.("Group A")=gnames(tbl.("Group A"))
+% tbl.("Group B")=gnames(tbl.("Group B"))
 
